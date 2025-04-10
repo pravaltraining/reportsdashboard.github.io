@@ -57,5 +57,8 @@ export default defineConfig({
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),
         }
+    }, esbuild: {
+        logOverride: { 'this-is-undefined-in-esm': 'silent' }
+        // This prevents noisy esbuild errors
     }
 })
