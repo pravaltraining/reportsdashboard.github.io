@@ -3,12 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://joedoe.github.io/your-app",
+  "homepage": "https://pravaltraining.github.io/reportsdashboard.github.io/index.html#",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:force": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

@@ -9,6 +9,6 @@
     "types"
   ],
   "compilerOptions": {
-    "declaration": false
+    "noEmitOnError": false
   }
 }
