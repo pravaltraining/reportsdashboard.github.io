@@ -76,18 +76,50 @@
 //     },
 // });\
 // vite.config.ts
+// import { defineConfig } from 'vite'
+
+// export default defineConfig({
+//   base: '/reportsdashboard.github.io/',    // set correct base
+//   build: {
+//     rollupOptions: {
+//       output: {
+//         entryFileNames: 'assets/index.js',
+//         chunkFileNames: 'assets/index.js',
+//         assetFileNames: 'assets/[name][extname]',
+//          globals: {
+//           react: 'React',
+//         '  react-dom': 'ReactDOM'
+//         }
+//       }
+//     }
+//   },
+//   commonjsOptions: {
+//     transformMixedEsModules: true
+//   }
+// })
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/reportsdashboard.github.io/',    // set correct base
+  base: '/reportsdashboard.github.io/',  // for GitHub Pages
+  plugins: [react()],
   build: {
     rollupOptions: {
+      external: [],
       output: {
         entryFileNames: 'assets/index.js',
         chunkFileNames: 'assets/index.js',
-        assetFileNames: 'assets/[name][extname]'
+        assetFileNames: 'assets/[name][extname]',
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM'
+        }
       }
+    },
+    commonjsOptions: {
+      transformMixedEsModules: true
     }
   }
 })
+
 
