@@ -1,0 +1,99 @@
+$color:var(--background);
+$light-color:var(--primary);
+.card-link-container{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    width: 20vw;
+    height: 45vh;
+    margin: 1rem;
+    .card{
+        border: none !important;
+      
+        .card-title {
+            font-size: 18px !important;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #cecece;
+        }
+        .card-text{
+            height: 35vh;
+            overflow-y: auto;
+        }
+        .card-text::-webkit-scrollbar {
+            width: 4px;
+        }
+         
+        .card-text::-webkit-scrollbar-thumb {
+         
+            background-color: #ccc !important;
+        }
+         
+        .card-text::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 4px #fff;
+        }
+        // ul{
+        //     list-style-image: url('../../../../../Assets//Icons//arrow-right-short.svg');
+        // }
+        // .report-links{
+        //     margin-bottom: 0px !important;
+        //     // list-style: none;
+        //     li{
+        //         margin-bottom: 0.4rem;
+        //         cursor: pointer;
+              
+        //         &::marker {
+        //             filter: invert(0%) sepia(100%) saturate(1000%) hue-rotate(0deg) brightness(100%) contrast(100%) !important;
+        //             color: $color !important;
+        //         }
+        //     }
+        //     li:hover{
+        //         text-decoration: underline;
+        //     }
+        //     .active{
+        //         text-decoration: underline;
+        //     }
+            
+           
+        // }
+        ul {
+            padding-left: 0rem;
+            list-style: none; // Remove the list-style-image
+            li {
+                margin-bottom: 0.4rem;
+                cursor: pointer;
+                position: relative;
+                padding-left: 20px;
+        
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 16px;
+                    height: 16px;
+                    background: url('../../../../../Assets/Icons/file-earmark-bar-graph.svg') no-repeat center;
+                    background-size: contain;
+                    filter: invert(0%) sepia(100%) saturate(1000%) hue-rotate(0deg) brightness(100%) contrast(100%);
+                    // Apply dynamic color using $color
+                    mask: url('../../../../../Assets/Icons/file-earmark-bar-graph.svg') no-repeat center;
+                    -webkit-mask: url('../../../../../Assets/Icons/file-earmark-bar-graph.svg') no-repeat center;
+                    background-color: $color;
+                }
+        
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+.modal-body{
+    .card-link-container{
+        height: 70vh;
+        .card .card-text{
+            height: 60vh;
+        }
+    }
+
+
+}
