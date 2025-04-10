@@ -43,7 +43,7 @@ $light-color:var(--primary);
     }
 
     .banner-bg-img{
-        background-image: url("../../Assets/Icons/banner.jpg");
+        background-image: url("../../../Assets/Icons/banner.jpg");
         height: 75px;
     
     }
@@ -82,5 +82,34 @@ $light-color:var(--primary);
             height: 50px;
         }
     }
-    
+}
+
+@media (min-width:1024px) and (max-width:1399px) {
+    .dashboard-page .banner-section{
+        margin-top:3vh !important;
+        margin-bottom:3vh !important;
+    }
+    .banner-container .banners .banner-item {
+            width: 5vw !important;
+            img {
+                width: 30px;
+                height: 30px;
+             
+            }
+            .img-text {
+                font-size: 9px;
+                color: #000000;
+                text-align: center;
+            }
+        } 
+    .banner-container{
+        .banner-bg-img{
+            height: 50px;
+        
+        }
+        .banner-empty{
+            border-top: 2px solid #c3c3c9;
+            height: 50px;
+        }
+    }
 }

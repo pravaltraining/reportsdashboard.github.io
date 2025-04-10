@@ -46,4 +46,21 @@ $color: var(--background);
     .report-content .report-container {
         height: 54vh;
     }
+
+}
+
+@media (min-height:550px) and (max-height:699px) {
+    .report-content .report-container {
+        height: 53vh;
+    }
+}
+
+@media (min-width:1024px) and (max-width:1399px){
+    .report-content  .img-container{
+        padding: 5px !important;
+        padding-right: 10px !important;
+    }
+    .maximize-icon,.minimize-icon {
+        height: 25px !important;
+    }
 }

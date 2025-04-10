@@ -60,6 +60,7 @@ $light-color:var(--primary);
             li:hover,.active{
                 color: #d96ffb;
             }
+            margin-bottom: 0rem !important;
       
         } 
         .border-top-theme{
@@ -99,4 +100,13 @@ $light-color:var(--primary);
             background-color:#00459a;
         }
     } 
+}
+
+@media (min-width:1025px) and (max-width:1400px) {
+    .report-link-container .p-tabview-nav-container ul li {
+        padding-bottom: 0.5rem;
+    }
+    .card-link-container {
+        margin: 0.5rem !important;
+    }
 }

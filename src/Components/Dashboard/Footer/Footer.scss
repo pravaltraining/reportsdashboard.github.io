@@ -18,3 +18,22 @@ $hover-color: var(--primary);
 .footer-content .footer-links ul li:hover{
     background-color: $hover-color;
 }
+
+@media (min-width:1025px) and (max-width:1399px) {
+    .footer-content
+        .footer-links ul
+            li{
+                font-size: 13px;
+            }
+        
+    
+}
+@media (min-width:1400px) and (max-width:1700px) {
+    .footer-content
+        .footer-links ul
+            li{
+                font-size: 15px;
+            }
+        
+    
+}

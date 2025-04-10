@@ -39,7 +39,7 @@ export default class FooterComponent extends React.Component<IFooterProps,IFoote
             </div>
             <div className='footer-links'>
               <ul className='ps-0'>
-                <li className='p-2 tutorial-intro' onClick={()=>{this.props.startTour()}}>
+                <li className='p-1 tutorial-intro' onClick={()=>{this.props.startTour()}}>
                   Tutorial
                 </li>
               </ul>

@@ -41,7 +41,7 @@ class PowerBIReportPopupComponent extends React.Component<IReportPopupProps, IRe
                     <div className= "modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header p-2">
-                                <div className="d-flex w-100 row">
+                                <div className="w-100 d-flex">
                                     <div className='col-11'>
                                         <h4 className="ppt-header ms-auto me-auto mt-auto mb-auto text-white text-center" >{ this.props.header}</h4>    
                                     </div>
@@ -55,7 +55,7 @@ class PowerBIReportPopupComponent extends React.Component<IReportPopupProps, IRe
                                     :   <>
                                             <div className='d-flex align-items-center justify-content-center h-100 fs-5'>
                                                {this?.props?.imageSrc && <div className=''>
-                                                    <img src={this.props?.imageSrc} alt="img" />
+                                                    <img className='ppt-img'src={this.props?.imageSrc} alt="img" />
                                                 </div>}
                                             </div>
                                         </> 

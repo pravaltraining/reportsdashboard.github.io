@@ -57,7 +57,7 @@ export default class CategorizedLinksComponent extends React.Component<ICategori
 
     generateLinks(rootReport:string,level:number,level1=this.state?.level1,level2=this.state?.level2,level3=this.state?.level3){
         var reportLinks:IPowerBIReport[] = [];
-        for(var i=1;i<=10;i++){
+        for(var i=1;i<=7;i++){
             var reportName ="";
             var isSelected = false;
             switch(level){
@@ -94,7 +94,7 @@ export default class CategorizedLinksComponent extends React.Component<ICategori
 
     generateReportLinks(name:string,level:number,isSubLevel:boolean = false){
         var reportLinks:IPowerBIReport[] = []
-        for(var i=1;i<=10;i++){
+        for(var i=1;i<=7;i++){
             var reportName = isSubLevel ? `${name} Report-${level}.${i}` : `${name} Report-${i}`;
             reportLinks.push(
                 {

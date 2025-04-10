@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './Report.scss';
 import minimizeIcon from './../../../Assets/Icons/minimizeIcon.png';
-import maximizeIcon from '../../Assets/Icons/maximizeWhite.png';
+import maximizeIcon from '../../../Assets/Icons/maximizeWhite.png';
 import CategorizedLinksComponent  from './ReportLink/CategorizedLinks';
 
 
