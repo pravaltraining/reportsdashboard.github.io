@@ -1,0 +1,37 @@
+
+$color:var(--background);
+$light-color:var(--primary);
+
+.filtercard-container{
+    box-shadow: 1px 1px 3px 1px #c3c3c3;
+    border-radius: 4px;
+    text-decoration: none;
+    height: 25vh !important;
+    cursor: pointer;
+    .card-header{
+        background-color: transparent !important;
+        font-size: 1.4rem;
+        color: $color;
+    }
+    .filtercard-bg svg{
+        width: 100%;
+        height: 25vh;
+    }
+    .card-unselected{
+        background-color: transparent !important;
+    }
+}
+.filter-card{
+    height: 25vh !important;
+    background-color: transparent !important;
+}
+
+.filtercard-container .card-selected {
+    .card-header{
+        color: #fff;
+        border-bottom: var(--bs-card-border-width) solid #fff;
+    }
+    background-color: var(--background) !important;
+    color: #fff;
+    border-bottom: 1px solid var(--primary);
+}

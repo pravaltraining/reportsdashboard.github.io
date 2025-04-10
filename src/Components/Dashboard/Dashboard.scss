@@ -1,0 +1,9 @@
+$color:var(--background);
+$light-color:var(--primary);
+
+.dashboard-page{
+    height: 100vh !important;
+}
+.theme-top-border{
+    background-color: $color;
+}

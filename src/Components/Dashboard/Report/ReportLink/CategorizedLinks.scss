@@ -1,0 +1,102 @@
+$color:var(--background);
+$light-color:var(--primary);
+
+.report-link-container{
+    .p-tabview-nav-content{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+     .p-tabview-nav-container ul{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // gap: 2rem;
+        list-style-type: none;
+        margin-bottom: none !important;
+        padding-left: none !important;
+    
+        li{
+            // padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom:2px solid #cecece;
+            cursor: pointer;
+            a{
+                padding-left: 2rem;
+                padding-right: 2rem;
+                text-decoration: none;
+                color: black !important;
+            }
+        }
+        li:hover{
+            transition: 0.3s;
+            border-bottom: 2px solid $color;
+            a{
+                color: $color !important;
+            }
+        }
+        .p-tabview-selected {
+            border-bottom: 2px solid $color;
+            a{
+                color: $color !important;
+            }
+        }
+    }
+    .p-tabview-ink-bar{
+        display: none;
+    }
+
+    .sublevel-1,.sublevel-2,.sublevel-3,.sublevel-4{
+        .card-link-container{
+            .border-top-theme{
+                padding-top: 15px;
+                border-top-right-radius: 5px;
+                border-top-left-radius: 5px;
+            }
+        }
+    }
+    .sublevel-1 .card-link-container{
+        .report-links{
+            li:hover,.active{
+                color: #d96ffb;
+            }
+      
+        } 
+        .border-top-theme{
+            background-color:#d96ffb;
+        }
+    }
+
+    .sublevel-2 .card-link-container{
+        .report-links{
+            li:hover,.active{
+                color: #8674fc;
+            }
+        } 
+        .border-top-theme{
+            background-color:#8674fc;
+        }
+    }
+
+    .sublevel-3 .card-link-container{
+        .report-links{
+            li:hover,.active{
+                color: #03859d;
+            }
+        } 
+        .border-top-theme{
+            background-color:#03859d;
+        }
+    }
+
+    .sublevel-4 .card-link-container{
+        .report-links{
+            li:hover,.active{
+                color: #00459a;
+            }
+        } 
+        .border-top-theme{
+            background-color:#00459a;
+        }
+    } 
+}

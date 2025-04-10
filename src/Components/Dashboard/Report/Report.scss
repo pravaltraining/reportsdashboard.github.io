@@ -1,0 +1,43 @@
+$color: var(--background);
+.reports-header {
+    text-align: center;
+    color: white;
+    font-size: larger;
+    background-color: $color !important;
+    border-top-left-radius: 4px !important;
+    border-top-right-radius: 4px !important;
+}
+.report-content {
+    box-shadow: #c3c3c3 1px 1px 3px 1px;
+    border-radius: 5px;
+    .report-container {
+        height: 60vh;
+        background-color: white;
+        border-radius: 3px;
+    }
+}
+
+.maximize-icon,.minimize-icon {
+    height: 32px;
+    cursor: pointer;
+    margin-bottom: 0.25rem;
+}
+
+.report-section{
+    .modal {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgb(0 0 0 / 25%);
+        z-index: 9999999999;
+        .modal-dialog {
+            max-width: 98vw !important;
+        }
+
+        .modal-content {
+            height: 90vh !important;
+        }
+    } 
+}
