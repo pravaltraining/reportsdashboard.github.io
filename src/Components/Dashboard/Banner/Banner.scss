@@ -1,7 +1,6 @@
 $color:var(--background);
 $light-color:var(--primary);
 .banner-container{
-    // background-image: url("../../../Assets/Icons/banner.jpg");
     background-size: cover;
 
     box-shadow: #c3c3c3 1px 1px 3px 1px;
@@ -39,9 +38,12 @@ $light-color:var(--primary);
    .banner-item {
         border: 2px solid $light-color
     }
+    .banner-item:hover{
+        border: 2px solid $color;
+    }
 
     .banner-bg-img{
-        background-image: url("../../../Assets/Icons/banner.jpg");
+        background-image: url("../../../../dist//assets//banner.jpg");
         height: 75px;
     
     }
@@ -51,4 +53,34 @@ $light-color:var(--primary);
         // background-color: $light-color;
     }
 
+
+
+}
+
+@media (min-width:1400px) and (max-width:1700px) {
+    .banner-container .banners .banner-item {
+            width: 8vw !important;
+            img {
+                width: 30px;
+                height: 30px;
+             
+            }
+            .img-text {
+                font-size: 9px;
+                color: #000000;
+                text-align: center;
+            }
+            width: 6vw;
+        } 
+    .banner-container{
+        .banner-bg-img{
+            height: 50px;
+        
+        }
+        .banner-empty{
+            border-top: 2px solid #c3c3c9;
+            height: 50px;
+        }
+    }
+    
 }

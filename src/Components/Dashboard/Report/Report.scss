@@ -41,3 +41,9 @@ $color: var(--background);
         }
     } 
 }
+
+@media (min-height:700px) and (max-height:850px) {
+    .report-content .report-container {
+        height: 54vh;
+    }
+}

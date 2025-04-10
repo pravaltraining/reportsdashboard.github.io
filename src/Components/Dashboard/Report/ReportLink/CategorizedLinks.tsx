@@ -5,7 +5,7 @@ import { ReportLinkTabs } from '../../../../Common/Constant/Constant';
 import ReportCardLinks from './ReportLink/ReportCardLinks';
 import { IPowerBIReport } from '../../../../Interfaces/IPowerBIReport';
 import PowerBIReportPopupComponent from '../../../Common/ReportPopup/PowerBIReportPopup';
-import linechart from '../../../../Assets/Icons/linechart.png'
+import linechart from '../../../../../dist/assets/linechart.png'
 
 
 interface ICategorizedLinksProps {
