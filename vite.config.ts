@@ -63,15 +63,31 @@
 //        // This prevents noisy esbuild errors
 //    }
 //})
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+// import { defineConfig } from 'vite';
+// import react from '@vitejs/plugin-react';
+
+// export default defineConfig({
+//     base: '/reportsdashboard.github.io/',  // 👈 This tells Vite the correct path
+//     plugins: [react()],
+//     resolve: {
+//         alias: {
+//             '@': new URL('./src', import.meta.url).pathname,
+//         },
+//     },
+// });\
+// vite.config.ts
+import { defineConfig } from 'vite'
 
 export default defineConfig({
-    base: '/reportsdashboard.github.io/',  // 👈 This tells Vite the correct path
-    plugins: [react()],
-    resolve: {
-        alias: {
-            '@': new URL('./src', import.meta.url).pathname,
-        },
-    },
-});
+  base: '/reportsdashboard.github.io/',    // set correct base
+  build: {
+    rollupOptions: {
+      output: {
+        entryFileNames: 'assets/index.js',
+        chunkFileNames: 'assets/index.js',
+        assetFileNames: 'assets/[name][extname]'
+      }
+    }
+  }
+})
+
