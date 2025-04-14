@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import HeaderComponent from './Header/Header';
 import { ThemeName } from '../Common/Theme/ThemeColors';
 import { THEMES } from '../Common/Theme/ThemeConfig';
@@ -13,115 +13,93 @@ import Tour from '../Common/Tour/Tour';
 import { TourSteps } from '../Common/Tour/ITourSteps';
 import BannerComponent from './Banner/Banner';
 import PowerBIReportPopupComponent from '../Common/ReportPopup/PowerBIReportPopup';
-import {IBannerItem} from './Banner/Banner';
+import { IBannerItem } from './Banner/Banner';
 import FooterComponent from './Footer/Footer';
 
-interface IDashboardProps {}
+const DashboardComponent: React.FC = () => {
+    const [themeProps, setThemeProps] = useState<IThemeContextProps>({} as IThemeContextProps);
+    const [startTour, setStartTour] = useState<boolean>(false);
+    const [showBannerReport, setShowBannerReport] = useState<boolean>(false);
+    const [selectedBanner, setSelectedBanner] = useState<IBannerItem>({} as IBannerItem);
 
-interface IDashboardState {
-  themeProps: IThemeContextProps;
-  startTour: boolean;
-  showBannerReport: boolean; 
-  selectedBanner: IBannerItem;
-}
+    useEffect(() => {
+        setUserTheme(ThemeName.Default);
+    }, []);
 
-
-export default class DashboardComponent extends React.Component<IDashboardProps, IDashboardState> {
-  constructor(props: IDashboardProps) {
-    super(props);
-    this.state = {
-      themeProps: {} as IThemeContextProps,
-      startTour: false,
-      showBannerReport: false,
-      selectedBanner: {} as IBannerItem,
+    const setUserTheme = (theme: keyof typeof ThemeName) => {
+        setThemeProps({
+            themeType: theme === undefined ? ThemeName.Default : ThemeName[theme],
+            theme: theme === undefined ? THEMES[ThemeName.Default] : THEMES[ThemeName[theme]],
+        });
     };
-  }
 
-  componentDidMount() {
-    this.setUserTheme(ThemeName.Default);
-  }
+    const handleTour = (isStartTour: boolean) => {
+        setStartTour(isStartTour);
+    };
 
-  setUserTheme(theme: keyof typeof ThemeName) {
-    this.setState({
-      themeProps: {
-        themeType: theme === undefined ? ThemeName.Default : ThemeName[theme],
-        theme: theme === undefined ? THEMES[ThemeName.Default] : THEMES[ThemeName[theme]],
-      } as IThemeContextProps,
-    });
-  }
-
-  handleTour(isStartTour: boolean) {
-    this.setState({ startTour: isStartTour });
-  }
-
-  getBannerImages() {
-    const bannerItems = [
-      { id: '1', imgSrc: marketing, text: 'Marketing Reports' ,customClass:"market-tour"},
-      { id: '2', imgSrc: research, text: 'Research Reports',customClass:"research-tour" },
-      { id: '3', imgSrc: sales, text: 'Sales Reports' ,customClass:"sales-tour"},
-      { id: '4', imgSrc: analytics, text: 'Analytics Reports' ,customClass:"analytics-tour"},
+    const getBannerImages = () => [
+        { id: '1', imgSrc: marketing, text: 'Marketing Reports', customClass: 'market-tour' },
+        { id: '2', imgSrc: research, text: 'Research Reports', customClass: 'research-tour' },
+        { id: '3', imgSrc: sales, text: 'Sales Reports', customClass: 'sales-tour' },
+        { id: '4', imgSrc: analytics, text: 'Analytics Reports', customClass: 'analytics-tour' },
     ];
-    return bannerItems;
-  }
 
-  toggleReportPopup(selectedBanner: IBannerItem) {
-    this.setState({ showBannerReport: !this.state.showBannerReport,selectedBanner });
-  }
-  
-  handleBannerClick(id: string) {
-    const bannerItems = this.getBannerImages();
-    const selectedBanner = bannerItems.find((item) => item.id === id);
-    if (selectedBanner) {
-      this.toggleReportPopup(selectedBanner);
-    }
-  }
+    const toggleReportPopup = (selectedBanner: IBannerItem) => {
+        setShowBannerReport(!showBannerReport);
+        setSelectedBanner(selectedBanner);
+    };
 
-  render() {
+    const handleBannerClick = (id: string) => {
+        const bannerItems = getBannerImages();
+        const selectedBanner = bannerItems.find((item) => item.id === id);
+        if (selectedBanner) {
+            toggleReportPopup(selectedBanner);
+        }
+    };
 
-    const {showBannerReport,selectedBanner} = this.state;
     return (
-      <div style={{ ...this.state.themeProps.theme } as React.CSSProperties}>
-        <div className="dashboard-page d-flex flex-column justify-content-between">
-          <div>
-            <div className="header-section">
-              <HeaderComponent
-                themeProps={this.state.themeProps}
-                changeTheme={(theme: keyof typeof ThemeName) => {
-                  this.setUserTheme(theme);
-                }}
-              />
+        <div style={{ ...themeProps.theme } as React.CSSProperties}>
+            <div className="dashboard-page d-flex flex-column justify-content-between">
+                <div>
+                    <div className="header-section">
+                        <HeaderComponent
+                            themeProps={themeProps}
+                            changeTheme={(theme: keyof typeof ThemeName) => {
+                                setUserTheme(theme);
+                            }}
+                        />
+                    </div>
+                    <div className="banner-section px-5 w-100 my-4">
+                        <BannerComponent
+                            bannerItems={getBannerImages()}
+                            handleBannerClick={handleBannerClick}
+                        />
+                    </div>
+                    <div className="report-section px-5">
+                        <ReportComponent />
+                    </div>
+                    <div className="footer-section">
+                        <FooterComponent startTour={() => handleTour(true)} />
+                    </div>
+                </div>
+                <Tour
+                    stepstart={startTour}
+                    stopTour={() => {
+                        handleTour(false);
+                    }}
+                    tourSteps={TourSteps}
+                />
+                {showBannerReport && (
+                    <PowerBIReportPopupComponent
+                        closePPT={() => toggleReportPopup({} as IBannerItem)}
+                        header={selectedBanner?.text}
+                        link="#"
+                        imageSrc={selectedBanner?.imgSrc}
+                    />
+                )}
             </div>
-            <div className="banner-section  px-5 w-100 my-4">
-              <BannerComponent
-                bannerItems={this.getBannerImages()}
-                handleBannerClick={(id: string) => {
-                  this.handleBannerClick(id);
-                }}
-              />
-            </div>
-            <div className="report-section px-5">
-              <ReportComponent />
-            </div>
-            <div className="footer-section ">
-              <FooterComponent 
-                startTour={()=>this.handleTour(true)}/>
-            </div>
-          </div>
-          <Tour
-            stepstart={this.state?.startTour}
-            stopTour={() => {
-              this.handleTour(false);
-            }}
-            tourSteps={TourSteps}
-          />
-         {showBannerReport && 
-          <PowerBIReportPopupComponent 
-            closePPT={()=>this.toggleReportPopup({} as IBannerItem)} 
-            header={selectedBanner?.text} 
-            link='#'
-            imageSrc={selectedBanner?.imgSrc}/>}
         </div>
-      </div>
     );
-  }
-}
+};
+
+export default DashboardComponent;

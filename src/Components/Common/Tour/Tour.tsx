@@ -1,30 +1,21 @@
 import 'intro.js/introjs.css';
 import introJs from 'intro.js';
-import { Component } from 'react';
+import { useEffect } from 'react';
 import { ITourSteps } from './ITourSteps';
 
 interface Props {
     stepstart: boolean;
     stopTour: any;
-    tourSteps:ITourSteps[];
-}
-interface IState {
+    tourSteps: ITourSteps[];
 }
 
-class Tour extends Component<Props, IState> {
-    constructor(props) {
-        super(props);
-        this.state = {
-            
-        }
-        this.exitTour = this.exitTour.bind(this);
-    }
+const Tour: React.FC<Props> = ({ stepstart, stopTour, tourSteps }) => {
 
-    componentDidUpdate() {
-        if (this.props.stepstart) {
-            var steps = this.getTourSteps()
+    useEffect(() => {
+        if (stepstart) {
+            const steps = getTourSteps();
             if (steps?.length > 0) {
-                var intro = introJs()
+                const intro = introJs();
                 intro.setOptions({
                     exitOnOverlayClick: false,
                     showStepNumbers: false,
@@ -36,37 +27,35 @@ class Tour extends Component<Props, IState> {
                     scrollToElement: true,
                     steps: steps,
                 }).start().then(() => {
-                    intro.oncomplete(this.exitTour);
-                    intro.onexit(this.exitTour)
+                    intro.oncomplete(exitTour);
+                    intro.onexit(exitTour);
                 });
             }
         }
-        
+    }, [stepstart, tourSteps]);
 
-    }
-    exitTour() {
-        this.props.stopTour(false)
-    }
+    const exitTour = () => {
+        stopTour(false);
+    };
 
-    getTourSteps(steps:ITourSteps[] = this.props.tourSteps) {
-        var filteredSteps = steps.filter(step => {
+    const getTourSteps = (steps: ITourSteps[] = tourSteps) => {
+        return steps.filter(step => {
             const elementExists = document.querySelector(step.element) !== null;
             return elementExists;
         });
+    };
 
-        return filteredSteps;
-    }
+    useEffect(() => {
+        return () => {
+            const intro = introJs();
+            if (intro) {
+                intro.exit(true);
+                exitTour();
+            }
+        };
+    }, []);
 
-    componentWillUnmount() {
-        if (introJs()) {
-            introJs().exit(true);
-            this.exitTour()
-        }
-    }
-
-    render() {
-        return null;
-    }
-}
+    return null;
+};
 
 export default Tour;

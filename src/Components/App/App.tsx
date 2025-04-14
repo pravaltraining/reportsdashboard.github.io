@@ -1,17 +1,13 @@
 import * as React from 'react';
 import DashboardComponent from '../Dashboard/Dashboard';
-import './App.scss'
+import './App.scss';
 
-
-
-export default class AppComponent extends React.Component {
-  
-  render() {
+const AppComponent: React.FC = () => {
     return (
         <div>
-            <DashboardComponent/>
+            <DashboardComponent />
         </div>
     );
-  }
-}
+};
 
+export default AppComponent;

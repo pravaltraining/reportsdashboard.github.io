@@ -1,60 +1,49 @@
-import * as React from 'react';
-import './Footer.scss'
+import React, { useState } from 'react';
+import './Footer.scss';
 import PowerBIReportPopupComponent from '../../Common/ReportPopup/PowerBIReportPopup';
 
-
 interface IFooterProps {
-  startTour: any;
+    startTour: any;
 }
 
-interface IFooterState {
-  showReportPopup:boolean;
-}
+const FooterComponent: React.FC<IFooterProps> = ({ startTour }) => {
+    const [showReportPopup, setShowReportPopup] = useState(false);
 
-export default class FooterComponent extends React.Component<IFooterProps,IFooterState> {
-
-  constructor(props: IFooterProps) {
-    super(props);
-    this.state = {
-      showReportPopup:false
+    const toggleReportPopup = () => {
+        setShowReportPopup(!showReportPopup);
     };
-  }
 
-  toggleReportPopup(){
-    this.setState({showReportPopup:!this.state.showReportPopup});
-  }
-
-
-  render() {
     return (
-      <>
-         <div className='footer-content  w-100 '>
-          <div className=" d-flex align-items-center justify-content-between px-5">
-            <div className='footer-links'>
-              {/* <ul className=' ps-0'> 
-                <li className='p-2 power-bi-report' onClick={()=>{this.toggleReportPopup()}}>
+        <>
+            <div className="footer-content w-100">
+                <div className="d-flex align-items-center justify-content-between px-5">
+                    <div className="footer-links">
+                        {/* Uncomment and update the following if needed for Power BI report */}
+                        {/* <ul className='ps-0'> 
+                <li className='p-2 power-bi-report' onClick={toggleReportPopup}>
                   Power BI Report
                 </li>
               </ul> */}
+                    </div>
+                    <div className="footer-links">
+                        <ul className="ps-0">
+                            <li className="p-1 tutorial-intro" onClick={startTour}>
+                                Tutorial
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div className='footer-links'>
-              <ul className='ps-0'>
-                <li className='p-1 tutorial-intro' onClick={()=>{this.props.startTour()}}>
-                  Tutorial
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
 
-
-       {this.state?.showReportPopup && <PowerBIReportPopupComponent 
-          link={''} 
-          closePPT={()=>{this.toggleReportPopup()}} 
-          header={''}/>}
-          
-      </>
-
+            {showReportPopup && (
+                <PowerBIReportPopupComponent
+                    link={''}
+                    closePPT={toggleReportPopup}
+                    header={''}
+                />
+            )}
+        </>
     );
-  }
-}
+};
+
+export default FooterComponent;
