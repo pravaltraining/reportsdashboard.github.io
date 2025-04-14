@@ -37,7 +37,10 @@ export default class ReportComponent extends React.Component<IReportProps,IRepor
                         <div className={`${isMaximized ? "modal-content" :  "report-content" }`}>
                             <div className={`reports-header header-background ${isMaximized ? "modal-header p-0" : ""} `} >
                               <div className='d-flex justify-content-between w-100'>
-                                <div className="tabs-container">
+                                <div className="tabs-container d-flex align-items-center mx-auto">
+                                    <div className='fw-bold'>
+                                      Reporting Dashboard
+                                    </div>
                                 </div>
                                 <div className="img-container p-2">
                                   <img src={isMaximized ? minimizeIcon : maximizeIcon} alt={`${isMaximized ? "Minimize Icon" : "Maximize Icon"}`} className={`maximize-icon-intro ${isMaximized ? "minimize-icon " : "maximize-icon "}`} onClick={() => this.toggleFullScreen()}></img>

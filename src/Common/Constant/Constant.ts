@@ -4,3 +4,6 @@ export const ReportLinkTabs= {
     tab3:"Sales",
     tab4:"Analytics"
 }
+
+export const Announcement = "Announcement";
+export const Event = "Event";

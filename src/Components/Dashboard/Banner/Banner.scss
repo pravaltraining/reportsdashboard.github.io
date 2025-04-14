@@ -36,7 +36,7 @@ $light-color:var(--primary);
         } 
     } 
    .banner-item {
-        border: 2px solid $light-color
+        border: 2px solid transparent;
     }
     .banner-item:hover{
         border: 2px solid $color;

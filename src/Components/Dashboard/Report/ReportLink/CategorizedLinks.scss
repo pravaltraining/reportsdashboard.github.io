@@ -66,6 +66,9 @@ $light-color:var(--primary);
         .border-top-theme{
             background-color:#d96ffb;
         }
+        .events{
+            border-bottom:solid #d96ffb;
+        }
     }
 
     .sublevel-2 .card-link-container{
@@ -76,6 +79,9 @@ $light-color:var(--primary);
         } 
         .border-top-theme{
             background-color:#8674fc;
+        }
+        .events{
+            border-bottom:solid #8674fc;
         }
     }
 
