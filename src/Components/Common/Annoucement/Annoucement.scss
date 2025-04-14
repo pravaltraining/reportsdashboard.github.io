@@ -19,12 +19,40 @@
         box-sizing: border-box;
     }
     .anc-title{
-        font-size: 13px;
+        font-size: 16px;
     }
     .anc-date{
-        font-size: 9px;
+        font-size: 13px;
     }
     .anc-info{
-        font-size: 11px;
+        font-size: 14px;
+    }
+}
+
+@media (min-width:1400px) and (max-width:1700px) {
+    .announcement-container{
+        .anc-title{
+            font-size: 14px;
+        }
+        .anc-date{
+            font-size: 11px;
+        }
+        .anc-info{
+            font-size: 13px;
+        }
+    }
+}
+
+@media (min-width:1025px) and (max-width:1399px) {
+    .announcement-container{
+        .anc-title{
+            font-size: 13px;
+        }
+        .anc-date{
+            font-size: 9px;
+        }
+        .anc-info{
+            font-size: 11px;
+        }
     }
 }
