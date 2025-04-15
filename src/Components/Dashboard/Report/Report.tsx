@@ -1,37 +1,19 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import './Report.scss';
 import minimizeIcon from './../../../Assets/Icons/minimizeIcon.png';
 import maximizeIcon from '../../../Assets/Icons/maximizeWhite.png';
-import CategorizedLinksComponent  from './ReportLink/CategorizedLinks';
+import CategorizedLinksComponent from './ReportLink/CategorizedLinks';
 
+const ReportComponent: React.FC = () => {
+    const [isMaximized, setIsMaximized] = useState<boolean>(false);
 
-interface IReportProps {
-
-}
-
-interface IReportState {
-  isMaximized: boolean;
-}
-
-export default class ReportComponent extends React.Component<IReportProps,IReportState> {
-
-  constructor(props: IReportProps) {
-    super(props);
-    this.state = {
-      isMaximized: false
-
+    const toggleFullScreen = () => {
+        setIsMaximized(!isMaximized);
     };
-  }
 
-  toggleFullScreen() {
-    this.setState({ isMaximized: !this.state.isMaximized });
-  }
-
-  render() {
-    const {isMaximized} = this.state;
     return (
-      <>
-          <React.Fragment>
+        <>
+             <React.Fragment>
               <div className={` ${isMaximized ? "report-modal modal d-block" : "col-12"}`}>
                     <div className={`${isMaximized ? "modal-dialog modal-dialog-centered" : ""}`}>
                         <div className={`${isMaximized ? "modal-content" :  "report-content" }`}>
@@ -43,7 +25,7 @@ export default class ReportComponent extends React.Component<IReportProps,IRepor
                                     </div>
                                 </div>
                                 <div className="img-container p-2">
-                                  <img src={isMaximized ? minimizeIcon : maximizeIcon} alt={`${isMaximized ? "Minimize Icon" : "Maximize Icon"}`} className={`maximize-icon-intro ${isMaximized ? "minimize-icon " : "maximize-icon "}`} onClick={() => this.toggleFullScreen()}></img>
+                                  <img src={isMaximized ? minimizeIcon : maximizeIcon} alt={`${isMaximized ? "Minimize Icon" : "Maximize Icon"}`} className={`maximize-icon-intro ${isMaximized ? "minimize-icon " : "maximize-icon "}`} onClick={toggleFullScreen}></img>
                                 </div>
                               </div>
                               <div>
@@ -58,7 +40,8 @@ export default class ReportComponent extends React.Component<IReportProps,IRepor
                     </div>
                 </div>
             </React.Fragment>
-      </>
+        </>
     );
-  } 
-}
+};
+
+export default ReportComponent;
