@@ -15,10 +15,14 @@ import BannerComponent from './Banner/Banner';
 import PowerBIReportPopupComponent from '../Common/ReportPopup/PowerBIReportPopup';
 import { IBannerItem } from './Banner/Banner';
 import FooterComponent from './Footer/Footer';
+import { createContext } from 'react';
+
+const ResetContext = createContext(false);
 
 const DashboardComponent: React.FC = () => {
     const [themeProps, setThemeProps] = useState<IThemeContextProps>({} as IThemeContextProps);
     const [startTour, setStartTour] = useState<boolean>(false);
+    const [isReset, setIsReset] = useState<boolean>(false);
     const [showBannerReport, setShowBannerReport] = useState<boolean>(false);
     const [selectedBanner, setSelectedBanner] = useState<IBannerItem>({} as IBannerItem);
 
@@ -58,7 +62,8 @@ const DashboardComponent: React.FC = () => {
     };
 
     return (
-        <div style={{ ...themeProps.theme } as React.CSSProperties}>
+        // <ResetContext.Provider value={{ updateReset: (value: boolean) => setIsReset(value) }}>
+             <div style={{ ...themeProps.theme } as React.CSSProperties}>
             <div className="dashboard-page d-flex flex-column justify-content-between">
                 <div>
                     <div className="header-section">
@@ -98,7 +103,9 @@ const DashboardComponent: React.FC = () => {
                     />
                 )}
             </div>
-        </div>
+            </div>
+        // </ResetContext.Provider>
+       
     );
 };
 
