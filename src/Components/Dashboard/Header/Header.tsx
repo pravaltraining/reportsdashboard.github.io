@@ -1,11 +1,11 @@
 import React from 'react';
 import './Header.scss';
-import { IoIosArrowForward } from 'react-icons/io';
 import { IoMdRefresh } from 'react-icons/io';
 import { IoMdSettings } from 'react-icons/io';
 import ThemePalette  from '../../Common/Theme/ThemePalette';
 import IThemeContextProps from '../../Common/Theme/IThemePalette';
 import { ThemeName } from '../../Common/Theme/ThemeColors';
+import { Logo } from '../../../Common/SVGIcons/MIDLogo/Logo';
 
 interface IHeaderProps {
     isTab?: boolean;
@@ -18,15 +18,15 @@ const HeaderComponent: React.FC<IHeaderProps> = ({ isTab, themeProps, changeThem
         <div className='header-container d-flex align-items-center justify-content-between w-100 px-4'>
             <div className='logo-container'>
                 <a className="logo" href={"/reportsdashboard.github.io/index.html"}>
-                    {/* <span className="m-0 p-0"><Logo /></span> */}
-                    <div className='d-flex align-items-center'>
+                    <span className="m-0 p-0"><Logo /></span>
+                    {/* <div className='d-flex align-items-center'>
                         <div className='logo-arrow'>
                             <IoIosArrowForward />
                         </div>
                         <div>
                             LOGO
                         </div>
-                    </div>
+                    </div> */}
                 </a>
             </div>
 
