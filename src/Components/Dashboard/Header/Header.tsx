@@ -19,6 +19,7 @@ const HeaderComponent: React.FC<IHeaderProps> = ({ isTab, themeProps, changeThem
             <div className='logo-container'>
                 <a className="logo" href={"/reportsdashboard.github.io/index.html"}>
                     <span className="m-0 p-0"><Logo /></span>
+                    
                     {/* <div className='d-flex align-items-center'>
                         <div className='logo-arrow'>
                             <IoIosArrowForward />
